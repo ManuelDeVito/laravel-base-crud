@@ -29,7 +29,13 @@
                         </div>
                     @endforeach
                 </div>
-
+                <div class="row">
+                    <div class="col-12 text-center space">
+                        <a href="{{ route('products.create') }}" class="btn btn-primary">
+                            Inserisci nuovo prodotto
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

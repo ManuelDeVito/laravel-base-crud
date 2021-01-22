@@ -44,7 +44,7 @@ class ProductController extends Controller
         $new_product->fill($data);
         $new_product->save();
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.show', ['product' => $new_product->id ]);
     }
 
     /**
@@ -76,9 +76,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        if($product) {
+            $data = [
+                'product' => $product
+            ];
+            return view('products.edit', $data);
+        }
+        abort(404);
     }
 
     /**
@@ -88,9 +94,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $data = $request->all();
+        $product->update($data);
+        return redirect()->route('products.show', ['product' => $product->id]);
     }
 
     /**
@@ -99,8 +107,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('products.index');
     }
 }

@@ -23,6 +23,17 @@
                                         <a href="{{ route('products.show', ['product' => $product->id ]) }}" class="btn btn-info">
                                             Dettagli
                                         </a>
+                                        <a href="{{ route('products.edit', ['product' => $product->id]) }}" class="btn btn-warning">
+                                            Modifica
+                                        </a>
+                                        <form method="POST" class="d-inline-block"
+                                            action="{{ route('products.destroy', ['product' => $product->id]) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">
+                                                Cancella
+                                            </button>
+                                        </form>
                                     </li>
                                 </ul>
                             </div>

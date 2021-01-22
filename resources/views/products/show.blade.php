@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="text-center">
-                    Tutti i prodotti
+                    Dettaglio prodotto
                 </h1>
                 <div class="card" style="width: 18rem;">
                     <div class="card-header text-center">
